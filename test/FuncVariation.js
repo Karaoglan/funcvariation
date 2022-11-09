@@ -18,21 +18,21 @@ describe("FuncVariation", function () {
   }
 
   describe("Deployment", function () {
-    it.skip("Should set the right default count", async function () {
+    it("Should set the right default count", async function () {
       const { funcVariation } = await deployFuncVariationFixture();
       expect(await funcVariation.get()).to.equal(0);
     });
   });
 
   describe("Increment", function () {
-    it.skip("Should increment the count", async function () {
+    it("Should increment the count", async function () {
       const { funcVariation } = await deployFuncVariationFixture();
       const beforeInc = await funcVariation.get();
       await funcVariation.inc();
       expect(await funcVariation.get()).to.equal(beforeInc + 1);
     });
 
-    it.skip("Should add the val to count", async function () {
+    it("Should add the val to count", async function () {
       const { funcVariation } = await deployFuncVariationFixture();
       const beforeInc = await funcVariation.get();
       const incVal = 10;
@@ -40,7 +40,7 @@ describe("FuncVariation", function () {
       expect(await funcVariation.get()).to.equal(beforeInc + incVal);
     });
 
-    it.skip("Should add the val to count with paying functionality", async function () {
+    it("Should add the val to count with paying functionality", async function () {
       const { funcVariation } = await deployFuncVariationFixture();
       const beforeInc = await funcVariation.get();
       const incVal = 10;
@@ -94,7 +94,7 @@ describe("FuncVariation", function () {
   });
 
   describe("Decrement", function () {
-    it.skip("Should decrement the count", async function () {
+    it("Should decrement the count", async function () {
       const { funcVariation } = await deployFuncVariationFixture();
       await funcVariation.inc();
       const beforeDecrement = await funcVariation.get();
@@ -102,7 +102,7 @@ describe("FuncVariation", function () {
       expect(await funcVariation.get()).to.equal(beforeDecrement - 1);
     });
 
-    it.skip("Should not decrement the count due to underflow, revert it!", async function () {
+    it("Should not decrement the count due to underflow, revert it!", async function () {
       const { funcVariation } = await deployFuncVariationFixture();
       await expect(funcVariation.dec()).to.be.revertedWithPanic(
         PANIC_CODES.ARITHMETIC_UNDER_OR_OVERFLOW
